@@ -1,0 +1,21 @@
+pkgname=snares-release
+version=0.1.0
+revision=1
+short_desc="Snares Linux system identity files"
+maintainer="Wilgot"
+license="MIT"
+homepage="https://snareslinux.github.io"
+
+depends="base-system"
+replaces="base-system>=0"
+
+do_install() {
+	vmkdir etc
+	
+	vcopy ${FILESDIR}/os-release etc/os-release
+	vcopy ${FILESDIR}/lsb-release etc/lsb-release
+	
+	vmkdir usr/lib
+
+	vcopy ${FILESDIR}/os-release usr/lib/os-release
+}
