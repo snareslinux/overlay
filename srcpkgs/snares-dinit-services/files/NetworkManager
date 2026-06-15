@@ -1,0 +1,5 @@
+type = process
+command = /usr/sbin/NetworkManager --no-daemon
+depends-on = dbus
+depends-on = apparmor
+restart = True

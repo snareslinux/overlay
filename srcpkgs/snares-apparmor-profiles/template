@@ -1,0 +1,10 @@
+pkgname=snares-apparmor-profiles
+version=0.1.0
+revision=1
+metapackage=yes
+short_desc="Snares Linux AppArmor profiles"
+maintainer="Wilgot"
+license="MIT"
+homepage="https://snareslinux.github.io"
+
+depends="apparmor"

@@ -1,0 +1,19 @@
+pkgname=snares-dinit-services
+version=0.1.0
+revision=1
+short_desc="Snares Linux dinit service files"
+maintainer="Wilgot"
+license="MIT"
+homepage="https://snareslinux.github.io"
+
+depends="snares-dinit NetworkManager apparmor grub"
+
+do_install() {
+	
+	vmkdir etc/dinit.d
+	
+	vcopy ${FILESDIR}/NetworkManager etc/dinit.d/NetworkManager
+	vcopy ${FILESDIR}/apparmor etc/dinit.d/apparmor
+	vcopy ${FILESDIR}/grub-update etc/dinit.d/grub-update
+	vcopy ${FILESDIR}/snares.target etc/dinit.d/snares.target
+}

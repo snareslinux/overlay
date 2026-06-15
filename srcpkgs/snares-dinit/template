@@ -1,0 +1,12 @@
+pkgname=snares-dinit
+version=0.1.0
+revision=1
+metapackage=yes
+short_desc="Snares Linux dinit init system"
+maintainer="Wilgot"
+license="MIT"
+homepage="https://snareslinux.github.io"
+
+provides="snares-init-0.1.0_1"
+conflicts="snares-openrc"
+depends="dinit"

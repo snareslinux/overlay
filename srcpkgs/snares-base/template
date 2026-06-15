@@ -1,0 +1,84 @@
+pkgname=snares-base
+version=0.1.0
+revision=1
+metapackage=yes
+short_desc="Snares Linux base system meta-package"
+maintainer="Wilgot"
+license="MIT"
+homepage="https://snareslinux.github.io"
+
+# Core userland
+depends="
+	bash
+	coreutils
+	util-linux
+	procps-ng
+	psmisc
+	diffutils
+	findutils
+	grep
+	sed
+	gawk
+	less
+	file
+	which
+	man-db
+	man-pages
+	mdocml
+"
+# Filesystem and hardware
+depends+="
+	e2fsprogs
+	dosfstools
+	btrfs-progs
+	lvm2
+	cryptsetup
+	linux-firmware
+	linux
+	snares-kernel-config
+"
+
+# Networking
+depends+="
+	NetworkManager
+	iproute2
+	iputils
+	iw
+	wpa_supplicant
+	wget
+	curl
+	openssh
+	ca-certificates
+"
+
+# Package management
+depends +="
+	xbps
+	xbps-triggers
+"
+
+# Security
+depends+="
+	apparmor
+	snares-apparmor-profiles
+"
+# Init
+depends+="
+	snares-init
+"
+
+# Bootloader
+depends+="
+	grub
+"
+
+# Misc base utilities
+depends+="
+	sudo
+	shadow
+	pam
+	dbus
+	tzdata
+	kbd
+	setxkbmap
+"

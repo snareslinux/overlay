@@ -1,0 +1,12 @@
+pkgname=snares-openrc
+version=0.1.0
+revision=1
+metapackage=yes
+short_desc="Snares Linux OpenRC init system"
+maintainer="Wilgot"
+license="MIT"
+homepage="https://snareslinux.github.io"
+
+provides="snares-init-0.1.0_1"
+conflicts="snares-dinit"
+depends="openrc"
