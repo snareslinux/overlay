@@ -70,6 +70,7 @@ depends+="
 # Bootloader
 depends+="
 	grub
+	grub-x86_64-efi
 "
 
 # Misc base utilities
