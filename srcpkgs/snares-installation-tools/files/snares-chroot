@@ -1,0 +1,55 @@
+#!/bin/bash
+
+set -e
+
+usage() {
+	echo "Usage: snares-chroot <root-directory> [command]"
+	exit 1
+}
+
+[[ $# -lt 1 ]] && usage
+
+CHROOT="$(realpath "$1")"
+shift
+
+[[ -d "$CHROOT" ]] || {
+	echo "Error: '$CROOT' does not exist."
+	exit 1
+}
+
+cleanup() {
+	echo "Unmounting chroot filesystems..."
+
+	umount -R "$CHROOT/sys" 2>/dev/null || true
+	umount -R "$CHROOT/proc" 2>/dev/null || true
+	umount -R "$CHROOT/dev" 2>/dev/null || true
+	umount "$CHROOT/tmp" 2>/dev/null || true
+}
+
+trap cleanup EXIT
+
+echo "Mounting virtual filesystems..."
+
+mount --rbind /dev "$CHROOT/dev"
+mount --make-rslave "$CHROOT/dev"
+
+mount --rbind /proc "$CHROOT/proc"
+mount --make-rslave "$CHROOT/proc"
+
+mount --rbind /sys "$CHROOT/sys"
+mount --make-rslave "$CHROOT/sys"
+
+mount --bind /tmp "$CHROOT/tmp"
+mount --make-slave "$CHROOT/tmp"
+
+if [[ -f /etc/resolv.conf ]]; then
+	cp /etc/resolv.conf "$CHROOT/etc/resolv.conf"
+fi
+
+echo "Entering chroot..."
+
+if [[ $# -gt 0 ]]; then
+	chroot "$CHROOT" "$@"
+else
+	chroot "$CHROOT" /bin/bash
+fi

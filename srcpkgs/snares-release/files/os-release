@@ -1,1 +1,9 @@
-os-release
+NAME="Snares Linux"
+VERSION="0.1.0"
+ID=snares
+ID_LIKE=void
+PRETTY_NAME="Snares Linux 0.1.0 Beta"
+ANSI_COLOR="1;34"
+HOME_URL="https://snareslinux.github.io"
+BUG_REPORT_URL="https://snareslinux.github.io/documentation/report.html"
+LOGO=snares-logo

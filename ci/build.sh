@@ -33,18 +33,23 @@ echo
 
 echo "=== Starting builds ==="
 
+echo "Clearing old logs..."
+
+rm -rf ci/logs/*
+
 # Build step
 for pkg in "$OVERLAY"/*; do
     name=$(basename "$pkg")
 
     echo ">>> Building $name"
 
-    if ! "$XBPS" pkg "$name"; then
+    if ! "$XBPS" pkg "$name" > "ci/logs/build-$name.log" 2>&1; then
         echo "!!! Build failed: $name"
         echo "Continuing with next package..."
+    else
+	echo "Built $name"
     fi
 
-    echo
 done
 
 echo "=== All done ==="

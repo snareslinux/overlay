@@ -1,0 +1,16 @@
+pkgname=snares-installation-tools
+version=0.1.0
+revision=1
+short_desc="Snares Linux installation tools"
+maintainer="Wilgot"
+license="MIT"
+homepage="https://snareslinux.github.io"
+
+depends=""
+
+do_install() {
+	
+	vmkdir usr/bin
+	
+	vcopy ${FILESDIR}/snares-chroot usr/bin/snares-chroot
+}
