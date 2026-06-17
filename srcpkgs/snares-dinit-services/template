@@ -15,5 +15,19 @@ do_install() {
 	vcopy ${FILESDIR}/NetworkManager etc/dinit.d/NetworkManager
 	vcopy ${FILESDIR}/apparmor etc/dinit.d/apparmor
 	vcopy ${FILESDIR}/grub-update etc/dinit.d/grub-update
+	vcopy ${FILESDIR}/tty1 etc/dinit.d/tty1
+	vcopy ${FILESDIR}/dbus etc/dinit.d/dbus
 	vcopy ${FILESDIR}/snares.target etc/dinit.d/snares.target
+
+	vmkdir etc/dinit.d/boot.d
+	vmkdir usr/libexec/snares
+
+	vcopy ${FILESDIR}/dbus-start usr/libexec/snares/dbus-start
+	chmod 755 ${DESTDIR}/usr/libexec/snares/dbus-start
+
+	ln -sf ../dbus ${DESTDIR}/etc/dinit.d/boot.d/dbus
+	ln -sf ../NetworkManager ${DESTDIR}/etc/dinit.d/boot.d/NetworkManager
+	ln -sf ../tty1 ${DESTDIR}/etc/dinit.d/boot.d/tty1
+
+	ln -sf snares.target ${DESTDIR}/etc/dinit.d/boot
 }

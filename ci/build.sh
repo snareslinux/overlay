@@ -33,7 +33,7 @@ echo
 
 echo "=== Starting builds ==="
 
-echo "Clearing old logs..."
+echo ">>> Clearing old logs"
 
 rm -rf ci/logs/*
 
@@ -42,6 +42,10 @@ for pkg in "$OVERLAY"/*; do
     name=$(basename "$pkg")
 
     echo ">>> Building $name"
+
+    if ! "$XBPS" clean "$name" > /dev/null 2>&1; then
+        true
+    fi
 
     if ! "$XBPS" pkg "$name" > "ci/logs/build-$name.log" 2>&1; then
         echo "!!! Build failed: $name"

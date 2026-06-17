@@ -1,3 +1,2 @@
 type = scripted
 command = /usr/bin/apparmor_parser --replace --write-cache /etc/apparmor.d
-logfile = /var/log/dinit/apparmor.log

@@ -1,0 +1,3 @@
+type = process
+command = /sbin/agetty -L tty1 linux
+restart = on-failure

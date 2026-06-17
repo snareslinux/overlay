@@ -9,7 +9,10 @@ homepage="https://snareslinux.github.io"
 
 # Core userland
 depends="
+	musl	
+	musl-devel	
 	bash
+	base-files
 	coreutils
 	util-linux
 	procps-ng
